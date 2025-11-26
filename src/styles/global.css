@@ -1,0 +1,8 @@
+@import './_variables.css';
+
+body {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
