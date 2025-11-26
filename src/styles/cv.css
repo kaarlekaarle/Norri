@@ -111,6 +111,9 @@ html, body {
     transform: translateY(-50%);
     max-width: 40%;
     pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
 }
 
 .cv-name {
@@ -168,12 +171,6 @@ html, body {
     margin: 0;
 }
 
-/* Right Column - already defined above, adding flex properties */
-.cv-right {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-m);
-}
 
 .cv-section {
     display: flex;
