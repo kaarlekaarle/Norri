@@ -1,11 +1,20 @@
 /* CV Portfolio Styles */
-@import './_variables.css';
-
 :root {
+    /* Spacing variables */
+    --spacing-xs: 0.25rem;
+    --spacing-s: 0.5rem;
+    --spacing-m: 1rem;
+    --spacing-l: 2rem;
+    
+    /* Font size variables */
+    --font-size-base: 0.75rem; /* 12px base */
+    
+    /* Font family variables */
     --font-display: 'Aboreto', serif;
     --font-sans: 'Inria Sans', sans-serif;
     --font-serif: 'Inria Serif', serif;
     
+    /* Color variables */
     --color-text: #000000;
     --color-bg: #ffffff;
     
