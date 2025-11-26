@@ -1,0 +1,215 @@
+/* CV Portfolio Styles */
+@import './_variables.css';
+
+:root {
+    --font-display: 'Aboreto', serif;
+    --font-sans: 'Inria Sans', sans-serif;
+    --font-serif: 'Inria Serif', serif;
+    
+    --color-text: #000000;
+    --color-bg: #ffffff;
+    
+    /* Viewport dimensions - updated via JavaScript */
+    --viewport-width: 100vw;
+    --viewport-height: 100vh;
+    
+    /* Image slideshow constraints */
+    --image-viewport-percentage: 20; /* ~20% of viewport */
+    --image-margin-x: 5%; /* Horizontal margin for centerpoint */
+    --image-margin-y: 5%; /* Vertical margin for centerpoint */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* No scrolling */
+}
+
+/* Bottom Layer: Image Slideshow */
+.slideshow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: var(--color-bg);
+    overflow: hidden;
+}
+
+.slideshow-image {
+    position: absolute;
+    opacity: 0.45; /* 45% opacity by default */
+    transition: opacity 0.25s ease-in-out;
+    object-fit: contain; /* Maintain aspect ratio */
+    transform: translate(-50%, -50%); /* Center based on centerpoint */
+    pointer-events: auto; /* Ensure hover events work */
+    z-index: 1; /* Ensure images can receive hover events */
+}
+
+.slideshow-image.active {
+    opacity: 0.45; /* 45% opacity when active (faded in) */
+}
+
+.slideshow-image:hover {
+    opacity: 1; /* 100% opacity on hover */
+}
+
+/* Top Layer: CV Text Content */
+.cv-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--viewport-width);
+    height: var(--viewport-height);
+    z-index: 2;
+    pointer-events: none; /* Allow clicks to pass through if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+/* Virtual Viewport Container */
+.cv-virtual-viewport {
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    max-width: 1024px;
+    max-height: 768px;
+    pointer-events: none; /* Allow clicks/hovers to pass through to slideshow images */
+    transform-origin: center center;
+    /* Scale will be applied via JavaScript */
+    transform: scale(1);
+}
+
+/* Left Column - Fixed to left */
+.cv-left {
+    position: absolute;
+    left: var(--spacing-l);
+    top: var(--spacing-l);
+    bottom: var(--spacing-l);
+    max-width: 40%;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(768px - calc(var(--spacing-l) * 2));
+}
+
+/* Right Column - Tied to right edge */
+.cv-right {
+    position: absolute;
+    right: var(--spacing-l);
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 40%;
+    pointer-events: auto;
+}
+
+.cv-name {
+    font-family: var(--font-display);
+    font-size: 4rem; /* 48px = 4 * 12px base */
+    font-weight: 400;
+    margin: 0;
+    line-height: normal;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cv-title {
+    font-family: var(--font-serif);
+    font-size: 1.333rem; /* 16px = 16/12 * 12px base */
+    font-weight: 300;
+    font-style: italic;
+    line-height: normal;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.cv-title p {
+    margin: 0;
+}
+
+.cv-summary {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: 300;
+    line-height: normal;
+    color: var(--color-text);
+}
+
+.cv-summary p {
+    margin: 0 0 var(--spacing-s) 0;
+}
+
+.cv-summary p:last-child {
+    margin-bottom: 0;
+}
+
+.cv-contact {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    font-style: italic;
+    line-height: normal;
+    color: var(--color-text);
+    margin-top: 0;
+}
+
+.cv-contact p {
+    margin: 0;
+}
+
+/* Right Column - already defined above, adding flex properties */
+.cv-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+}
+
+.cv-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.cv-section-title {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.cv-section-content {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    font-weight: 300;
+    line-height: normal;
+    color: var(--color-text);
+}
+
+.cv-section-content p {
+    margin: 0;
+}
+
+.cv-section-content p:last-child {
+    margin-bottom: 0;
+}
+
+.cv-section-content strong {
+    font-weight: 400;
+}
+
+/* Desktop only - no responsive adjustments for now */
+

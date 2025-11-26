@@ -1,0 +1,11 @@
+:root {
+  --spacing-xs: 0.25rem;
+  --spacing-s: 0.5rem;
+  --spacing-m: 1rem;
+  --spacing-l: 2rem;
+
+  --font-size-base: 0.75rem; /* 12px base */
+  --font-size-lg: 1.25rem;
+
+  /* Add colours, etc */
+}
